@@ -1,4 +1,5 @@
 name = "deployer"
+main = "src/index.js"
 usage_model = 'bundled'
 compatibility_flags = []
 workers_dev = true
