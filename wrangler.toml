@@ -11,6 +11,6 @@ compatibility_date = "2022-08-23"
 #
 # Add with wrangler cli / in dashboard
 
-[vars]
-API_KEYS = "1234,4567"
-DEPLOY_URLS = '{"test":"https://httpbin.org/post"}'
+# [vars]
+# API_KEYS = "1234,4567"
+# DEPLOY_URLS = '{"test":"https://httpbin.org/post"}'
