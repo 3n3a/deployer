@@ -23,7 +23,8 @@ router.post('/api/trigger', async request => {
   if(webhook_url) {
     // triggers webhook
     const res = await fetch(webhook_url, {body: '', method: 'POST'})
-    if(!res.ok) return new Response('INVALID WEBHOOK RESPONSE')
+    console.log(webhook_url, res.status)
+    if(res.status != 200) return new Response('INVALID WEBHOOK RESPONSE')
 
     const json = await res.json()
     console.log('webhook response', json)
