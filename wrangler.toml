@@ -1,5 +1,6 @@
 name = "deployer"
-main = "src/index.js"
+main = "index.js"
+type = "webpack"
 usage_model = 'bundled'
 compatibility_flags = []
 workers_dev = true
@@ -10,3 +11,7 @@ compatibility_date = "2022-08-23"
 # - API_KEYS
 #
 # Add with wrangler cli / in dashboard
+
+[vars]
+API_KEYS = "1234,4567"
+DEPLOY_URLS = '{"test":"url.com"}'

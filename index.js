@@ -1,5 +1,10 @@
 import { Router } from 'itty-router'
 
+/**
+ * API_KEYS --> String divided by ','
+ * DEPLOY_URLS --> String of JSON
+ */
+
 // now let's create a router (note the lack of "new")
 const router = Router()
 
@@ -9,10 +14,10 @@ router.get('/', () => new Response(''))
 
 // POST to the collection (we'll use async here)
 router.post('/api/trigger', async request => {
-  const apiKey = '' // X-API-KEY
+  const body = await request.json()
+  const apiKey = body.key || ''
   if(!isApiKeyValid(apiKey)) return new Response('INVALID KEY')
 
-  const body = await request.json()
   const part = body.part
   const webhook_url = getWebhookUrl(part)
   if(webhook_url) {
@@ -49,12 +54,12 @@ function getWebhookUrl(part) {
  * @returns bool
  */
 function isApiKeyValid(key) {
-  const urls = JSON.parse(API_KEYS)
-  if(urls.includes(key)) return true
+  const keys = String(API_KEYS).split(",")
+
+  if(keys.includes(key)) return true
   return false
 }
 
 // attach the router "handle" to the event handler
-addEventListener('fetch', event =>
-  event.respondWith(router.handle(event.request))
+addEventListener('fetch', event => event.respondWith(router.handle(event.request))
 )
