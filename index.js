@@ -12,7 +12,8 @@ const router = Router()
 router.get('/', () => new Response(''))
 
 router.get('/config', async request => {
-  return DEPLOY_URLS
+  console.log(DEPLOY_URLS)
+  return new Response(':)') 
 })
 
 // POST to the collection (we'll use async here)
