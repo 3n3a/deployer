@@ -11,6 +11,9 @@ const router = Router()
 // GET collection index
 router.get('/', () => new Response(''))
 
+router.get('/config', async request => {
+  return DEPLOY_URLS
+})
 
 // POST to the collection (we'll use async here)
 router.post('/api/trigger', async request => {
