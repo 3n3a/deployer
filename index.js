@@ -59,6 +59,7 @@ function getWebhookUrl(part) {
  * @returns bool
  */
 function isApiKeyValid(key) {
+  console.log("key: " + key)
   const keys = String(API_KEYS).split(",")
 
   if(keys.includes(key)) return true
